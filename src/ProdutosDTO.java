@@ -44,5 +44,9 @@ public class ProdutosDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-}
+
+    void setPreco(double aDouble) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    }
