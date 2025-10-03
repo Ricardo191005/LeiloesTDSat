@@ -20,6 +20,26 @@ public class listagemVIEW extends javax.swing.JFrame {
         initComponents();
         listarProdutos();
     }
+// Método para vender produto selecionado (Método 4)
+private void venderProdutoSelecionado() {
+    int linhaSelecionada = tabela.getSelectedRow();
+    if (linhaSelecionada == -1) {
+        JOptionPane.showMessageDialog(this, "Selecione um produto para vender.");
+        return;
+    }
+
+    // Pega o ID do produto na primeira coluna da tabela
+    int idProduto = (int) listaProdutos.getModel().getValueAt(listaProdutos.getSelectedRow(), 0);
+
+    // Chama o método do DAO
+    ProdutosDAO dao = new ProdutosDAO();
+    if (dao.venderProduto(idProduto)) {
+        JOptionPane.showMessageDialog(this, "Produto vendido com sucesso!");
+        atualizarTabela(); // atualiza a tabela após vender
+    } else {
+        JOptionPane.showMessageDialog(this, "Erro ao vender produto.");
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,10 +201,8 @@ public class listagemVIEW extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new listagemVIEW().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new listagemVIEW().setVisible(true);
         });
     }
 
@@ -221,5 +239,33 @@ public class listagemVIEW extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     
+    }
+
+    private void atualizarTabela() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static class tabela {
+
+        private static int getSelectedRow() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static Object getModel() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public tabela() {
+        }
+    }
+
+    private static class JOptionPane {
+
+        private static void showMessageDialog(listagemVIEW aThis, String produto_vendido_com_sucesso) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public JOptionPane() {
+        }
     }
 }
